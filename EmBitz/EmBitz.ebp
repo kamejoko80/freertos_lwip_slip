@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<EmBitz_project_file>
+	<EmBitzVersion release="1.11" revision="0" />
+	<FileVersion major="1" minor="0" />
+	<Project>
+		<Option title="EmBitz" />
+		<Option pch_mode="2" />
+		<Option compiler="armgcc_eb" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin\Debug\EmBitz.elf" />
+				<Option object_output="obj\Debug\" />
+				<Option type="0" />
+				<Option compiler="armgcc_eb" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Device>
+					<Add option="$device=cortex-m4" />
+					<Add option="$fpu=fpv4-sp-d16" />
+					<Add option="$lscript=../STM32F407VGTx_FLASH.ld" />
+					<Add option="$stack=0x1000" />
+					<Add option="$heap=0x1000" />
+				</Device>
+				<Compiler>
+					<Add option="-mfloat-abi=hard" />
+					<Add option="-std=c99" />
+					<Add option="-Wall" />
+					<Add option="-fdata-sections" />
+					<Add option="-ffunction-sections" />
+					<Add option="-O0" />
+					<Add option="-g3" />
+					<Add symbol="STM32F407xx" />
+					<Add symbol="USE_HAL_DRIVER" />
+					<Add symbol="SLIP_USE_RX_THREAD=1" />
+					<Add symbol="SLIP_RX_FROM_ISR=0" />
+					<Add symbol="SLIP_RX_QUEUE=0" />
+					<Add directory="..\Middlewares\Third_Party\LwIP\src\include" />
+					<Add directory="..\Middlewares\Third_Party\LwIP\system" />
+					<Add directory="..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS" />
+					<Add directory="..\Middlewares\Third_Party\FreeRTOS\Source\include" />
+					<Add directory="..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F" />
+				</Compiler>
+				<Assembler>
+					<Add option="-Wa,--gdwarf-2" />
+					<Add option="-x assembler-with-cpp" />
+				</Assembler>
+				<Linker>
+					<Add option="-Wl,--gc-sections" />
+					<Add option="-lc -lm -lnosys" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin\Release\EmBitz.elf" />
+				<Option object_output="obj\Release\" />
+				<Option type="0" />
+				<Option create_hex="1" />
+				<Option compiler="armgcc_eb" />
+				<Option projectDeviceOptionsRelation="0" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-g2" />
+					<Add option="-fdata-sections" />
+					<Add option="-ffunction-sections" />
+				</Compiler>
+				<Assembler>
+					<Add option="-Wa,--no-warn" />
+				</Assembler>
+				<Linker>
+					<Add option="-Wl,--gc-sections" />
+				</Linker>
+			</Target>
+		</Build>
+		<Device>
+			<Add option="$device=cortex-m4" />
+			<Add option="$fpu=fpv4-sp-d16" />
+			<Add option="$stack=0x0800" />
+			<Add option="$heap=0x0000" />
+			<Add option="$lscript=./stm32f407vg_flash.ld" />
+		</Device>
+		<Compiler>
+			<Add option="-mfloat-abi=hard" />
+			<Add option="-fno-strict-aliasing" />
+			<Add symbol="ARM_MATH_CM4" />
+			<Add symbol="__FPU_USED" />
+			<Add symbol="STM32F407VG" />
+			<Add symbol="STM32F4XX" />
+			<Add symbol="USE_STDPERIPH_DRIVER" />
+			<Add directory=".\inc" />
+			<Add directory=".\src" />
+			<Add directory=".\cmsis" />
+			<Add directory=".\SPL\inc" />
+			<Add directory=".\SPL\src" />
+		</Compiler>
+		<Linker>
+			<Add option="-eb_start_files" />
+			<Add option="-eb_lib=n" />
+		</Linker>
+		<Unit filename="..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h" />
+		<Unit filename="..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h" />
+		<Unit filename="..\Drivers\CMSIS\Include\cmsis_gcc.h" />
+		<Unit filename="..\Drivers\CMSIS\Include\core_cm4.h" />
+		<Unit filename="..\Drivers\CMSIS\Include\core_cmFunc.h" />
+		<Unit filename="..\Drivers\CMSIS\Include\core_cmInstr.h" />
+		<Unit filename="..\Drivers\CMSIS\Include\core_cmSimd.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h" />
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cortex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_dma_ex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_eth.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_flash_ramfunc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_gpio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_pwr_ex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_spi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim_ex.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_uart.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Inc\ethernetif.h" />
+		<Unit filename="..\Inc\lwip.h" />
+		<Unit filename="..\Inc\lwipopts.h" />
+		<Unit filename="..\Inc\main.h" />
+		<Unit filename="..\Inc\stm32f4xx_hal_conf.h" />
+		<Unit filename="..\Inc\stm32f4xx_it.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\croutine.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\croutine.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOSConfig_template.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_prototypes.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\StackMacros.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\list.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM4F\portmacro.h" />
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\queue.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\tasks.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\FreeRTOS\Source\timers.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\api\api_lib.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\api\api_msg.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\api\err.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\api\netbuf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\api\netdb.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\api\netifapi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\api\sockets.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\api\tcpip.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\apps\httpd\fs.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\apps\httpd\fsdata.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\apps\httpd\httpd.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\apps\httpd\httpd_structs.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\def.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\dns.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\inet_chksum.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ip.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv4\autoip.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv4\dhcp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv4\etharp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv4\icmp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv4\igmp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv4\ip4.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv4\ip4_addr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv4\ip4_frag.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv6\dhcp6.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv6\ethip6.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv6\icmp6.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv6\inet6.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv6\ip6.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv6\ip6_addr.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv6\ip6_frag.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv6\mld6.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\ipv6\nd6.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\mem.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\memp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\netif.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\pbuf.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\raw.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\stats.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\sys.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\tcp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\tcp_in.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\tcp_out.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\timeouts.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\core\udp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\api.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\fs.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\httpd.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\httpd_opts.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\lwiperf.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mdns.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mdns_opts.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mdns_priv.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\netbiosns.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\netbiosns_opts.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_core.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_mib2.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_opts.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_scalar.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_table.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_threadsync.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmpv3.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\sntp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\sntp_opts.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\tftp_opts.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\tftp_server.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\arch.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\autoip.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\debug.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\def.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\dhcp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\dhcp6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\dns.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\err.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\errno.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\etharp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\ethip6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\icmp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\icmp6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\igmp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\inet.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\inet_chksum.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\init.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\ip.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\ip4.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\ip4_addr.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\ip4_frag.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\ip6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\ip6_addr.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\ip6_frag.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\ip_addr.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\mem.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\memp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\mld6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\nd6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\netbuf.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\netdb.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\netif.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\netifapi.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\opt.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\pbuf.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\api_msg.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\memp_priv.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\memp_std.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\tcp_priv.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\tcpip_priv.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\autoip.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\dhcp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\dns.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\etharp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\ethernet.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\icmp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\icmp6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\igmp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\ip.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\ip4.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\ip6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\mld6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\nd6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\tcp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\udp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\raw.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\sio.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\snmp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\sockets.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\stats.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\sys.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\tcp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\tcpip.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\timeouts.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\lwip\udp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\etharp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ethernet.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\lowpan6.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\lowpan6_opts.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ccp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\chap-md5.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\chap-new.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\chap_ms.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\eap.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ecp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\eui64.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\fsm.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ipcp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ipv6cp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\lcp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\magic.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\mppe.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\polarssl\arc4.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\polarssl\des.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\polarssl\md4.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\polarssl\md5.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\polarssl\sha1.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ppp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ppp_impl.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ppp_opts.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppapi.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppcrypt.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppdebug.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppoe.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppol2tp.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppos.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\upap.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\vj.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\netif\slipif.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\posix\errno.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\posix\netdb.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\include\posix\sys\socket.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ethernet.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ethernetif_template.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\lowpan6.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\auth.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\ccp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\chap-md5.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\chap-new.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\chap_ms.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\demand.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\eap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\ecp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\eui64.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\fsm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\ipcp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\ipv6cp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\lcp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\magic.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\mppe.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\multilink.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\polarssl\arc4.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\polarssl\des.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\polarssl\md4.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\polarssl\md5.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\polarssl\sha1.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\ppp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\pppapi.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\pppcrypt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\pppoe.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\pppol2tp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\pppos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\upap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\utils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\ppp\vj.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\src\netif\slipif.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Middlewares\Third_Party\LwIP\system\arch\bpstruct.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\system\arch\cc.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\system\arch\cpu.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\system\arch\epstruct.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\system\arch\init.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\system\arch\lib.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\system\arch\perf.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\system\arch\sys_arch.h" />
+		<Unit filename="..\Middlewares\Third_Party\LwIP\system\OS\sys_arch.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\application.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\ethernetif.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\freertos.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\lwip.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\retarget.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\sio.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\stm32f4xx_hal_msp.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\stm32f4xx_hal_timebase_TIM.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\stm32f4xx_it.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\system_stm32f4xx.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\Src\udp_echoserver.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="..\startup_stm32f407xx.s">
+			<Option compilerVar="ASM" />
+		</Unit>
+		<Unit filename="..\STM32F407VGTx_FLASH.ld" />
+		<Extensions>
+			<code_completion />
+			<debugger>
+				<target_debugging_settings target="Release" active_interface="ST-link">
+					<debug_interface interface_id="ST-link" ip_address="localhost" ip_port="4242" path="${EMBITZ}\share\contrib" executable="STLinkGDB.exe" description="" dont_start_server="false" backoff_time="1000" options="0" reg_filter="0" active_family="STMicroelectronics" gdb_before_conn="" gdb_after_conn="">
+						<family_options family_id="STMicroelectronics">
+							<option opt_id="ID_JTAG_SWD" opt_value="swd" />
+							<option opt_id="ID_VECTOR_START" opt_value="0x08000000" />
+							<option opt_id="ID_RESET_TYPE" opt_value="System" />
+							<option opt_id="ID_LOAD_PROGRAM" opt_value="1" />
+							<option opt_id="ID_SEMIHOST_CHECK" opt_value="0" />
+							<option opt_id="ID_RAM_EXEC" opt_value="0" />
+							<option opt_id="ID_VEC_TABLE" opt_value="1" />
+							<option opt_id="ID_DONT_CONN_RESET" opt_value="0" />
+							<option opt_id="ID_ALL_MODE_DEBUG" opt_value="0" />
+							<option opt_id="ID_DEV_ADDR" opt_value="" />
+							<option opt_id="ID_VERBOSE_LEVEL" opt_value="3" />
+						</family_options>
+					</debug_interface>
+				</target_debugging_settings>
+				<target_debugging_settings target="Debug" active_interface="ST-link">
+					<debug_interface interface_id="ST-link" ip_address="localhost" ip_port="4242" path="${EMBITZ}\share\contrib" executable="STLinkGDB.exe" description="" dont_start_server="false" backoff_time="1000" options="0" reg_filter="0" active_family="STMicroelectronics" gdb_before_conn="" gdb_after_conn="">
+						<family_options family_id="STMicroelectronics">
+							<option opt_id="ID_JTAG_SWD" opt_value="swd" />
+							<option opt_id="ID_VECTOR_START" opt_value="0x08000000" />
+							<option opt_id="ID_RESET_TYPE" opt_value="System" />
+							<option opt_id="ID_LOAD_PROGRAM" opt_value="1" />
+							<option opt_id="ID_SEMIHOST_CHECK" opt_value="0" />
+							<option opt_id="ID_RAM_EXEC" opt_value="0" />
+							<option opt_id="ID_VEC_TABLE" opt_value="1" />
+							<option opt_id="ID_DONT_CONN_RESET" opt_value="0" />
+							<option opt_id="ID_ALL_MODE_DEBUG" opt_value="0" />
+							<option opt_id="ID_DEV_ADDR" opt_value="" />
+							<option opt_id="ID_VERBOSE_LEVEL" opt_value="3" />
+						</family_options>
+					</debug_interface>
+				</target_debugging_settings>
+			</debugger>
+			<envvars />
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build />
+				<doxyfile_warnings />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</EmBitz_project_file>
